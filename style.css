@@ -1,0 +1,185 @@
+/* Loads “Roboto” from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  /* CSS variable with fallback in use below */
+  --primary-color: #0057e7;
+  --secondary-color: rgb(240, 240, 240);
+  --accent-color: hsl(10, 80%, 50%);
+}
+
+* {
+  box-sizing: border-box;               /* universal selector */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;    /* third-party font */
+  background-color: var(--secondary-color);
+  color: var(--primary-color, #000);    /* fallback to #000 */
+  line-height: 1.5;                     /* unitless */
+  padding: 1rem;                        /* rem = relative unit */
+}
+
+header {
+  background-color: rgba(255, 255, 255, 0.8); /* rgba() color */
+  padding: 1em 2em;                           /* em = relative unit */
+  text-align: center;                         /* text-align */
+  position: sticky;                           /* sticky positioning */
+  top: 0;
+}
+header p {
+  color: #333;                              /* hex code */
+}
+header p span {
+  font-style: italic;                       /* nested selector */
+}
+
+/* selector list + class selector (even if not present in HTML) */
+nav, nav > ul {
+  display: flex;                            /* flex container */
+  flex-direction: row;                      /* flexbox attribute */
+  justify-content: center;                  /* flexbox attribute */
+  align-items: center;                      /* flexbox attribute */
+  gap: 1vw;                                 /* vw = relative unit */
+}
+nav > ul {
+  list-style: none;
+  padding: 0.5rem;
+}
+nav > ul > li {
+  margin: 0 0.5rem;                         /* child combinator */
+  padding: 0.25rem 0.5rem;
+  border: 2px solid var(--primary-color);  /* border shorthand */
+  border-radius: 4px;                      /* border-radius */
+  background-color: color(display-p3 1 0.5 0 / 0.2); /* wider-gamut color */
+}
+nav > ul > li + li {
+  /* adjacent sibling combinator */
+  border-color: color-mix(in srgb, var(--primary-color) 70%, orange 30%);
+}
+
+main {
+  display: grid;                            /* grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* grid attr */
+  grid-auto-rows: auto;                    /* grid attr */
+  gap: 1rem;                                /* grid attr */
+  margin: 2rem 0;                           /* shorthand margin */
+}
+
+#agenda {
+  /* longhand margin */
+  margin-top: 2rem;
+  margin-right: auto;  /* auto margins */
+  margin-bottom: 2rem;
+  margin-left: auto;
+  max-width: 40rem;    /* max-width */
+  padding: 1rem 2rem;  /* shorthand padding */
+  border-style: dashed;/* border-style */
+  border-width: 3px;   /* border-width */
+  border-color: #FFA500; /* color name */
+  border-radius: 8px;
+  position: relative;  /* relative positioning */
+}
+#agenda h2 {
+  margin-bottom: 0.5rem; /* element selector */
+  text-decoration: underline; /* text-decoration */
+  color: var(--accent-color);
+}
+
+/* adjacent sibling combinator */
+#agenda h2 + hr {
+  margin-bottom: 1rem;
+}
+
+/* general sibling combinator */
+#agenda h2 ~ p {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+section[id="discussion"] { /* attribute selector */
+  padding: 1rem;
+  background-color: #fff; /* hex code */
+}
+section[id="discussion"] ul > li > ul > li {
+  margin-left: 1.5rem;
+  list-style-type: square;
+}
+
+section#media {
+  padding: 1rem 1cm;     /* cm = absolute unit */
+  border: 1pt solid #000; /* pt = absolute unit */
+  background-color: #f9f9f9;
+}
+section#media img,
+section#media video {    /* selector list */
+  display: block;        /* block display */
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;        /* shorthand margin */
+}
+
+footer {
+  background-color: #222;
+  color: #FFF;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+footer form.feedback {    /* class selector */
+  margin: auto;
+  max-width: 30rem;
+  border: 2px groove var(--accent-color);
+  padding: 1em;           /* em = relative unit */
+}
+footer input[type="checkbox"] { /* attribute selector */
+  transform: scale(1.2);
+}
+footer input[type="radio"] + label { /* adjacent sibling */
+  margin-left: 0.5rem;
+}
+
+.hidden { display: none; }     /* .class selector */
+.inline-block { display: inline-block; } /* .class selector */
+
+a:hover {                     /* pseudo-class */
+  text-decoration: underline;
+}
+button:active {                /* pseudo-class */
+  transform: scale(0.95);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: #FFF;
+  border: none;               /* border shorthand */
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+button:hover {
+  background-color: color-mix(in srgb, var(--primary-color) 60%, #000 40%);
+}
+
+main:has(section#media) {
+  /* sections with media get this extra highlight */
+  outline: 2px solid hsl(200, 70%, 50%);
+}
+
+@media (max-width: 800px) {
+  nav > ul {
+    flex-direction: column;   /* reflow on tablet/phone */
+  }
+  #agenda, section#discussion, section#media {
+    padding: 0.5rem;
+    margin: 1rem 0;
+  }
+}
+
+header {
+  /* inside header, style any <a> specially */
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+}
