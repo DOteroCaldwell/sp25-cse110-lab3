@@ -53,7 +53,7 @@ nav > ul > li {
   padding: 0.25rem 0.5rem;
   border: 2px solid var(--primary-color);  /* border shorthand */
   border-radius: 4px;                      /* border-radius */
-  background-color: color(colorspace 0.2 0.1 0.1[ / .2]); /* wider-gamut color */
+  background-color: #FFF; /* wider-gamut color */
 }
 nav > ul > li + li {
   /* adjacent sibling combinator */
