@@ -53,11 +53,11 @@ nav > ul > li {
   padding: 0.25rem 0.5rem;
   border: 2px solid var(--primary-color);  /* border shorthand */
   border-radius: 4px;                      /* border-radius */
-  background-color: color(display-p3 1 0.5 0 / 0.2); /* wider-gamut color */
+  background-color: #FFF; /* wider-gamut color */
 }
 nav > ul > li + li {
   /* adjacent sibling combinator */
-  border-color: color-mix(in srgb, var(--primary-color) 70%, orange 30%);
+  border-color: #000;
 }
 
 main {
@@ -158,7 +158,7 @@ button {
   cursor: pointer;
 }
 button:hover {
-  background-color: color-mix(in srgb, var(--primary-color) 60%, #000 40%);
+  background-color: #FFA500;
 }
 
 main:has(section#media) {
@@ -176,10 +176,7 @@ main:has(section#media) {
   }
 }
 
-header {
-  /* inside header, style any <a> specially */
-  a {
-    color: var(--primary-color);
-    text-decoration: none;
-  }
+header a {
+  color: var(--primary-color);
+  text-decoration: none;
 }
